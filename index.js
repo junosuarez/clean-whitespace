@@ -37,10 +37,11 @@ var invisible = new RegExp('[' + [
     '\u00ad',
     '\u0080-\u009f',
     '\u000e-\u001f',
-    '\u0000-\u0008'
+    '\u0000-\u0008',
+    '\r'
   ].join('') + ']', 'g')
 var tab = /\t/g
-var line = /[\n\v\f\r]/g
+var line = /[\n\v\f]/g
 
 function cleanWhitespace (str, opt) {
   opt = opt || {}

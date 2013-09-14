@@ -10,7 +10,7 @@ describe('clean-whitespace', function () {
   })
 
   it('cleans invisible chars', function () {
-  cleanWhitespace('salve \u2029mundo\u2029!')
+  cleanWhitespace('salve \u2029mundo\u2029!\r')
     .should.equal('salve mundo!')
 })
 
@@ -22,8 +22,8 @@ describe('clean-whitespace', function () {
   })
 
   it('cleans vertical spacing', function () {
-    cleanWhitespace(' a \n b \v c \f d \r e')
-      .should.equal(' a \n b \n c \n d \n e')
+    cleanWhitespace(' a \n b \v c \f d')
+      .should.equal(' a \n b \n c \n d')
   })
 
   describe('options', function () {
@@ -51,7 +51,7 @@ describe('clean-whitespace', function () {
     })
 
     it('.line', function () {
-      cleanWhitespace(' a \n b \v c \f d \r e', {line: '\n\r'})
+      cleanWhitespace(' a \n b \v c \f d \n e', {line: '\n\r'})
         .should.equal(' a \n\r b \n\r c \n\r d \n\r e')
     })
   })
